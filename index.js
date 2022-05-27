@@ -17,25 +17,31 @@ function lakukanLooping(arrPegawai) {
   // ! JANGAN DIMODIFIKASI
   let dataYangAkanDilooping = arrPegawai;
 
+  let hasilLooping = dataYangAkanDilooping.map(item => {
+    return item.namaDepan + " " + item.namaBelakang
+  })
   /*
     TODO 1: Buatlah sebuah variabel bernama "hasilLooping" 
       yang berisi gabungan nama depan dan belakang dari masing masing pegawai
 
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
-  let hasilLooping = null;
+
 
   /*
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
       yang berisi jumlah pria dari masing masing pegawai
   */
-  let jumlahPria = null;
-
+  let jumlahPria = dataYangAkanDilooping.filter(item => {
+    return item.jenisKelamin === "M"
+  }).length;
   /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
       yang berisi jumlah wanita dari masing masing pegawai
   */
-  let jumlahWanita = null;
+  let jumlahWanita = dataYangAkanDilooping.filter(item => {
+    return item.jenisKelamin === "F"
+  }).length;
 
   /*
     TODO 4: Buatlah sebuah variabel bernama "komentar"
@@ -48,8 +54,20 @@ function lakukanLooping(arrPegawai) {
       Apabila imbang, maka komentar akan berisi:
         "Jumlah Pria dan Wanita berimbang"
   */
-  let komentar = null;
 
+
+  let komentarLoop = (pria, wanita) => {
+    if (pria > wanita) {
+      return "Jumlah Pria lebih banyak dari Wanita"
+    } else if (wanita > pria) {
+      return "Jumlah Wanita lebih banyak dari Pria"
+    } else if (pria === wanita) {
+      return "Jumlah Pria dan Wanita berimbang"
+    }
+  }
+
+  let komentar = komentarLoop(jumlahPria, jumlahWanita)
+  console.log(komentar)
   // ! JANGAN DIMODIFIKASI
   return {
     hasilLooping,
