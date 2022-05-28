@@ -16,10 +16,14 @@ const arrayObjectPegawai = require("./data-customer.json");
 function lakukanLooping(arrPegawai) {
   // ! JANGAN DIMODIFIKASI
   let dataYangAkanDilooping = arrPegawai;
+  let hasilLooping = [];
 
-  let hasilLooping = dataYangAkanDilooping.map(item => {
-    return item.namaDepan + " " + item.namaBelakang
-  })
+  let namaPanjang = (data) => {
+    for (let i = 0; i < data.length; i++) {
+      hasilLooping.push(data[i].namaDepan + " " + data[i].namaBelakang)
+    }
+  }
+  namaPanjang(dataYangAkanDilooping)
   /*
     TODO 1: Buatlah sebuah variabel bernama "hasilLooping" 
       yang berisi gabungan nama depan dan belakang dari masing masing pegawai
@@ -32,16 +36,30 @@ function lakukanLooping(arrPegawai) {
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
       yang berisi jumlah pria dari masing masing pegawai
   */
-  let jumlahPria = dataYangAkanDilooping.filter(item => {
-    return item.jenisKelamin === "M"
-  }).length;
+  let jumlahPria = 0;
+  let banyakPria = (data) => {
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].jenisKelamin === "M") {
+        jumlahPria++
+      }
+    }
+  }
+  banyakPria(dataYangAkanDilooping)
+
   /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
       yang berisi jumlah wanita dari masing masing pegawai
   */
-  let jumlahWanita = dataYangAkanDilooping.filter(item => {
-    return item.jenisKelamin === "F"
-  }).length;
+  let jumlahWanita = 0;
+  let banyakWanita = (data) => {
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].jenisKelamin === "F") {
+        jumlahWanita++
+      }
+    }
+  }
+  banyakWanita(dataYangAkanDilooping)
+
 
   /*
     TODO 4: Buatlah sebuah variabel bernama "komentar"
@@ -54,7 +72,6 @@ function lakukanLooping(arrPegawai) {
       Apabila imbang, maka komentar akan berisi:
         "Jumlah Pria dan Wanita berimbang"
   */
-
 
   let komentarLoop = (pria, wanita) => {
     if (pria > wanita) {
